@@ -1,0 +1,30 @@
+<style type="text/css">
+  p{
+    color:white;
+   }
+   td{
+    background-color: white;
+   }
+   thead{
+    color:white;
+   }
+   strong{
+    color:white;
+   }
+
+</style>
+
+<p id="notice"><%= notice %></p>
+<!--
+<p>
+  <strong>Cont:</strong>  
+  <%= @turno.cont %>
+</p>
+-->
+<p>
+  <strong>Actual:</strong>
+  <%= @turno.actual %>
+</p>
+
+<%= link_to 'Editar', edit_turno_path(@turno),class: "btn btn-warning" %> |
+<%= link_to 'Home   Turnos', turnos_path,class: "btn btn-primary" %>

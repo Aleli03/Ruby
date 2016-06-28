@@ -1,0 +1,38 @@
+<style type="text/css">
+   label{
+    color:white;
+   }
+   h1{
+     color: white;
+   }
+</style>
+<%= form_for(@list) do |f| %>
+  <% if @list.errors.any? %>
+    <div class="jumbotron">
+    <div class="alert alert-danger" role="alert">
+      <font color="black"><h2><%= pluralize(@list.errors.count, "error") %> prohibited this list from being saved:</h2></font>
+
+      <% @list.errors.full_messages.each do |message| %>
+        <font color="black"><li ><%= message %></li></font>
+      <% end %>
+
+    </div>
+  </div>
+  <% end %>
+
+  <div class="field, container">
+    <%= f.label :producto %><br>
+    <%= f.text_field :producto %>
+  </div>
+  <div class="field">
+    <%= f.label :costo %><br>
+    <%= f.number_field :costo %>
+  </div>
+  <div class="field">
+    <%= f.label :cantidad %><br>
+    <%= f.number_field :cantidad %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

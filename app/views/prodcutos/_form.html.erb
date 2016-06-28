@@ -1,0 +1,48 @@
+<style type="text/css">
+   label{
+    color:white;
+   }
+
+</style>
+<%= form_for(@prodcuto) do |f| %>
+  <% if @prodcuto.errors.any? %>
+    <div class="container">
+    <div class="alert alert-danger" role="alert">
+      <font color="black"><h2><%= pluralize(@prodcuto.errors.count, "errores encontrados") %> prohibited this prodcuto from being saved:</h2></font>
+      <% @prodcuto.errors.full_messages.each do |message| %>
+        <font color="black"><li><%= message %></li></font>
+      <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="field, container">
+    <table class="table">
+      <tr>
+        <td><%= f.label :codigo %></td>
+        <td><%= f.text_field :codigo %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :nombre %></td>
+        <td><%= f.text_field :nombre %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :fecha_vencimiento %></td>
+        <td><%= f.date_field :fecha_vencimiento %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :cantidad %></td>
+        <td><%= f.number_field :cantidad %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :Precio %></td>
+        <td><%= f.number_field :Precio %></td>
+    </tr>
+  </table>
+  </div>
+  <br>
+  <div class="actions">
+    <%= f.submit 'Guardar', class:"big ui button, ui inverted olive button"%>
+  </div>
+  <br>
+<% end %>

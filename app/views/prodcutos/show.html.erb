@@ -1,0 +1,68 @@
+<style type="text/css">
+  p{
+    color:white;
+   }
+   td{
+    background-color: white;
+   }
+   thead{
+    color:white;
+   }
+   h1{
+   	color: white;
+   }
+ strong{
+    color:white;
+   }
+   label{
+    color: white;
+   }
+</style>
+<div id="muestra">
+<h1><strong>Datos del Producto </strong></h1>
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Codigo:</strong>
+  <%= @prodcuto.codigo %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @prodcuto.nombre %>
+</p>
+
+<p>
+  <strong>Fecha vencimiento:</strong>
+  <%= @prodcuto.fecha_vencimiento %>
+</p>
+
+<p>
+  <strong>Cantidad:</strong>
+  <%= @prodcuto.cantidad %>
+</p>
+<p>
+  <strong>Precio:</strong>
+  <%= @prodcuto.Precio %>
+</p>
+</div>
+<%= form_tag({:controller => "prodcutos", :action => "reabastecer"}, :method => :get) do %>
+
+    <%= label_tag("Cantidad:") %>
+
+  <%= number_field_tag(:cantbox) %>
+  <%= hidden_field :id, @prodcuto.id %>
+<%= submit_tag "Reabastecer" , class: "btn btn-success" %>
+<% end %>
+
+<%= form_tag({:controller => "prodcutos", :action => "modificar"}, :method => :get) do %>
+
+    <%= label_tag("Cantidad:") %>
+
+  <%= number_field_tag(:cantbox) %>
+  <%= hidden_field :id, @prodcuto.id %>
+<%= submit_tag "Retirar" , class: "btn btn-danger" %>
+<% end %>
+
+
+<%= link_to 'Editar', edit_prodcuto_path(@prodcuto), class: "btn btn-warning" %> |
+<%= link_to 'Home Productos', prodcutos_path , class: "btn btn-primary"%>

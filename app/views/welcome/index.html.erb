@@ -1,0 +1,26 @@
+<style type="text/css">
+	body{
+		background-color: #043D2C;
+		text-align: center;
+		color:white;
+	}
+</style>
+		<div id="muestra">
+		<h1><strong> Veterinaria</strong> </h1>
+		<%= image_tag "principal.jpg", :alt => "Twitter", :title => "logoVeterinaria" , class:"img-circle" ,width:"380px",height:"380px"%>
+		<h3>Bienvenido</h3>
+	</div>
+		<div class="ui vertical buttons">
+			<%= link_to 'Clientes', clientes_path , class:"huge ui button,ui inverted orange button" %></br>
+			<%= link_to 'Mascotas', mascota_path, class:"huge ui button,ui inverted orange button" %>
+		</div>
+		<div class="ui vertical buttons">
+			<%= link_to 'Veterinarios', veterinarios_path , class:"huge ui button,ui inverted blue button" %></br>
+			<%= link_to 'Turnos', turnos_path,class:"huge ui button,ui inverted blue button" %>
+			<%= link_to 'Atencion', atencions_path,class:"huge ui button,ui inverted blue button" %>
+
+		</div>
+		<div class="ui vertical buttons">
+			<%= link_to 'Productos', prodcutos_path ,class:"huge ui button,ui inverted olive button" %>
+			<%= link_to 'Venta', venta_path, class:"huge ui button,ui inverted olive button" %>
+		</div>

@@ -1,0 +1,51 @@
+<style type="text/css">
+
+  p{
+    color:white;
+   }
+   td{
+    background-color: white;
+   }
+   thead{
+    color:white;
+   }
+   strong{
+    color:white;
+   }
+
+</style>
+<p id="notice"><%= notice %></p>
+<div id="muestra">
+
+<h1><strong>Datos del veterinario</strong></h1>
+<p>
+  <strong>Ci:</strong>
+  <%= @veterinario.ci %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @veterinario.nombre %>
+</p>
+
+<p>
+  <strong>Apellido:</strong>
+  <%= @veterinario.apellido %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @veterinario.telefono %>
+</p>
+
+<p>
+  <strong>Correo:</strong>
+  <%= @veterinario.correo %>
+</p>
+<p>
+  <strong>Especialidad:</strong>
+  <%= @veterinario.especialidad %>
+</p>
+</div>
+<%= link_to 'Editar', edit_veterinario_path(@veterinario) , class: "btn btn-warning"%>
+<%= link_to 'Atras', veterinarios_path, class: "btn btn-primary" %>

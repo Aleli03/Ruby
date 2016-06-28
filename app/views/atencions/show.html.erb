@@ -1,0 +1,91 @@
+<style type="text/css">
+  p{
+    color:white;
+   }
+   td{
+    background-color: white;
+   }
+   thead{
+    color:white;
+   }
+   strong{
+    color:white;
+   }
+
+</style>
+<div id="muestra">
+<h1><strong>Datos de la Atencion</strong></h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cliente:</strong>
+  <%if Cliente.find_by(id: @atencion.cliente_id) != nil %>
+            <%= @atencion.cliente.nombre %> <%= @atencion.cliente.apellido %>
+  <%else%>
+            N/A
+  <%end%>
+</p>
+<p>
+  <%if@atencion.mascotum_id !=nil%>
+  <strong>Mascota:</strong>
+  <% if Mascotum.find_by(id: @atencion.mascotum_id) != nil  %>
+            <%= @atencion.mascotum.nombre %>
+            <%else%>
+            N/A
+            <%end%>
+</p>
+<%else%>
+   <%= form_tag({:controller => "atencions", :action => "asignar_mascota"}, :method => :get) do %>
+    <%= collection_select :cliente, :cliente_id, Mascotum.where(cliente_id:@atencion.cliente_id), :id, :nombre%>
+    <%= submit_tag "Asignar" , class: "btn btn-danger" %>
+    <% end %>
+<%end%>
+<p>
+  <strong>Veterinario:</strong>
+   <% if Veterinario.find_by(id: @atencion.veterinario_id) != nil  %>
+            <%= @atencion.veterinario.nombre%> <%= @atencion.veterinario.apellido%>
+            <%else%>
+            N/A
+            <%end%>
+</p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @atencion.fecha %>
+</p>
+
+
+
+<p>
+  <strong>Anamnesis:</strong>
+  <%= @atencion.anamnesis %>
+</p>
+
+<p>
+  <strong>Temperatura(°C):</strong>
+  <%= @atencion.temperatura %>
+</p>
+
+<p>
+  <strong>Mucosas:</strong>
+  <%= @atencion.mucosas %>
+</p>
+
+<p>
+  <strong>Palpacion:</strong>
+  <%= @atencion.palpacion %>
+</p>
+
+<p>
+  <strong>Diagnostico:</strong>
+  <%= @atencion.diagnostico %>
+</p>
+
+<p>
+  <strong>Tratamiento:</strong>
+  <%= @atencion.tratamiento %>
+</p>
+</div>
+
+<%= link_to 'Edit', edit_atencion_path(@atencion), class: "btn btn-warning"  %> |
+<%= link_to 'Back', atencions_path , class: "btn btn-primary" %>

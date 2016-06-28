@@ -1,0 +1,60 @@
+<style type="text/css">
+   label{
+    color:white;
+   }
+   h1{
+     color: white;
+   }
+</style>
+<%= form_for(@veterinario) do |f| %>
+  <% if @veterinario.errors.any? %>
+  <div class="container">
+    <div class="alert alert-danger" role="alert">
+      <font color="black"><h2><%= pluralize(@veterinario.errors.count, "error") %> prohibited this veterinario from being saved:</h2></font>
+
+      <ul>
+      <% @veterinario.errors.full_messages.each do |message| %>
+        <font color="black"><li><%= message %></li></font>
+      <% end %>
+      </ul>
+    </div>
+    </div>
+
+  <% end %>
+
+  <div class="field, container">
+    <table class="table">
+      <tr>
+      <td><%= f.label :ci %></td>
+      <td><%= f.number_field :ci %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :nombre %></td>
+      <td><%= f.text_field :nombre %></td>
+  </tr>
+    <tr>
+      <td><%= f.label :apellido %></td>
+      <td><%= f.text_field :apellido %></td>
+  </tr>
+    <tr>
+      <td><%= f.label :telefono %></td>
+      <td><%= f.number_field :telefono %></td>
+  </tr>
+    <tr>
+      <td><%= f.label :correo %></td>
+      <td><%= f.text_field :correo %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :especialidad %></td>
+    <% especialidades = {'Medico'=> 'Medico','Ayudante'=> 'Ayudante','Estudiante veterinario'=>'EstudianteVeterinario','Tecnico en peluquero'=>'TecnicoPeluquero', 'Peluquero'=>'Peluquero', 'Master especialista en peluqueria y estetica canina'=>'MasterEspecialistaPeluquero'} %>
+    <% lista = especialidades.sort %>
+    <td><%= f.select :especialidad, lista %></td>
+</tr>
+</table>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit 'Guardar', class:"big ui button, ui inverted olive button" %>
+  </div>
+<% end %>

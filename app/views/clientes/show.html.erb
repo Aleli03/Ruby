@@ -1,0 +1,94 @@
+
+<style type="text/css">
+  p{
+    color:white;
+   }
+   td{
+    background-color: white;
+   }
+   thead{
+    color:white;
+   }
+   strong{
+    color:white;
+   }
+   #botones{
+     font:black;
+   }
+
+</style>
+<div id="muestra">
+<h1><strong>Datos del Cliente </strong></h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ci:</strong>
+  <%= @cliente.ci %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @cliente.nombre %>
+</p>
+
+<p>
+  <strong>Apellido:</strong>
+  <%= @cliente.apellido %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @cliente.telefono %>
+</p>
+
+<p>
+  <strong>Correo:</strong>
+  <%= @cliente.correo %>
+</p>
+
+<p><strong>Mascotas del Dueño:</strong><p>
+<br>
+<br>
+<div class="row">
+<div class="col-md-4 col-md-offset-4">
+<%if@cliente.mascotums.count>0 %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Especie</th>
+      <th>Raza</th>
+      <th>Fecha nacimiento</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+      <% @cliente.mascotums.each do |mascotum| %>
+        <tr>
+          <td><%= mascotum.nombre %></td>
+          <td><%= mascotum.especie %></td>
+          <td><%= mascotum.raza %></td>
+          <td><%= mascotum.fecha_nacimiento %></td>
+          <td><%= link_to 'Ver', mascotum , class: "btn btn-info" %></td>
+          <td><%= link_to 'Editar', edit_mascotum_path(mascotum) , class: "btn btn-warning"%></td>
+          <td><%= link_to 'Eliminar', mascotum, method: :delete, data: { confirm: 'Esta seguro?' }, class: "btn btn-danger" %></td>
+        </tr>
+      <% end %>
+    <%else%>
+      <strong>No hay mascotas disponible</strong>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<br>
+<div id="botones">
+  <%= link_to 'Historial de compras', '/clientes/'+@cliente.id.to_s+'/ventas' , class: "btn btn-success" %>
+
+<%= link_to 'Registrar Mascota', new_mascotum_path , class: "btn btn-success" %>
+<%= link_to 'Editar', edit_cliente_path(@cliente), class: "btn btn-warning" %>
+<%= link_to 'Lista de Clientes', clientes_path , class: "btn btn-primary"%>
+</div>

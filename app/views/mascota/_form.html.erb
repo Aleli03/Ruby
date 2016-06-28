@@ -1,0 +1,91 @@
+  <style type="text/css">
+   label{
+    color:white;
+   }
+</style>
+
+
+
+
+<%= form_for(@mascotum) do |f| %>
+  <% if @mascotum.errors.any? %>
+  <div class="container">
+    <div class="alert alert-danger" role="alert">
+      <font color="black"><h2><%= pluralize(@mascotum.errors.count, "errores") %> se encontraron al crear una nueva mascota:</h2></font>
+      <ul>
+      <% @mascotum.errors.full_messages.each do |message| %>
+        <font color="black"><li ><%= message %></li></font>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+  <% end %>
+
+  <div class="field, container">
+    <table class="table">
+      <tr>
+        <td><%= f.label :Dueño %></td>
+        <td><%= f.collection_select(:cliente_id, Cliente.all, :id, :ci) %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :nombre %></td>
+        <td><%= f.text_field :nombre %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :especie %></td>
+        <td>
+          <% especies = {'CAN'=> 'CAN', 'FELINO'=>'FELINO', 'OTRO'=>'OTRO'} %>
+          <fieldset>
+            <% lista = especies.sort %>
+            <% lista.each do |x| %>
+              <%= f.radio_button :especie, x[1]%>
+              <label for="<%= x[1]%>"><%= x[0]%></label>
+            <% end %>
+          </fieldset>
+        </td>
+      </tr>
+      <tr>
+        <td><%= f.label :raza %></td>
+        <td><%= f.text_field :raza %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :fecha_nacimiento %></td>
+        <td><%= f.date_field :fecha_nacimiento %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :Color %></td>
+        <td><%= f.text_field :color %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :Sexo %></td>
+        <% genero = {'Macho'=> true, 'Hembra'=> false} %>
+        <td><fieldset>
+            <% lista = genero.sort %>
+            <% lista.each do |x| %>
+            <%= f.radio_button :sexo, x[1]%>
+              <label for="<%= x[1]%>"><%= x[0]%></label>
+            <% end %>
+          </fieldset>
+        </td>
+      </tr>
+      <tr>
+        <td><%= f.label :Esterilizado %></td>
+        <% este = {'Si'=> true, 'No'=> false} %>
+        <td>
+          <fieldset>
+            <% lista = este.sort %>
+            <% lista.each do |x| %>
+              <%= f.radio_button :esterilizado, x[1]%>
+              <label for="<%= x[1]%>"><%= x[0]%></label>
+            <% end %>
+          </fieldset>
+        </td>
+      </tr>
+  </table>
+  </div>
+  <br>
+  <div class="actions">
+    <%= f.submit 'Guardar' , class:"big ui button, ui inverted olive button" %>
+  </div>
+  <br>
+<% end %>

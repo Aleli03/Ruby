@@ -1,0 +1,38 @@
+<style type="text/css">
+   label{
+    color:white;
+   }
+
+</style>
+<%= form_for(@ventum) do |f| %>
+  <% if @ventum.errors.any? %>
+    
+<div class="container">
+    <div class="alert alert-danger" role="alert">
+      <font color="black"><h2><%= pluralize(@ventum.errors.count, "error") %> prohibited this ventum from being saved:</h2></font>
+      <ul>
+      <% @ventum.errors.full_messages.each do |message| %>
+        <font color="black"><li ><%= message %></li></font>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <% end %>
+
+
+   <div class="field">
+    <%= f.label 'Cliente' %>
+    <%= f.collection_select(:cliente_id, Cliente.all, :id, :ci) %>
+    <div class="actions">
+      <%= f.submit 'Siguiente',class: "big ui button, ui inverted green button"%>
+      <br>
+    </div>
+    <br>
+    <br>
+    <%= link_to 'Registrar Cliente', new_cliente_path,  class: "big ui button, ui inverted gray  button" %>
+  </div>
+
+
+
+<% end %>
